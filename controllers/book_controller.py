@@ -3,6 +3,7 @@ from models.book import Book
 from models.author import Author
 
 from repositories import book_repository
+from repositories import author_repository
 
 books_blueprint = Blueprint('books', __name__)
 
@@ -22,4 +23,19 @@ def delete(id):
     book_repository.delete(id)
     return redirect('/books')
 
+@books_blueprint.route("/books/new", methods=['GET'])
+def new_book():
+    author= author_repository.select_all()
+    return render_template("books/new.html", authors = author)
 
+
+@books_blueprint.route('/books', methods=['POST'])
+def create_book():
+    title = request.form['title']
+    genre = request.form['genre']
+    publisher = request.form['publisher']
+    author_name = request.form['author_id']
+    author = author_repository.select(author_id)
+    book = Book(title, genre, publisher, author, id)
+    book_repository.save(book)
+    return redirect('/books')
