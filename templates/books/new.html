@@ -15,12 +15,12 @@
         <input type="text" id="publisher" name="publisher" placeholder="Publisher">
     </div>
     <div>
-        <label for="author">Author:</label>
-        <select name="author_id" id="author">
-            {% for user in all_users %}
-                <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
-            {% endfor %}
-        </select>
+        <label for="author_namef">Author First Name:</label>
+        <input type="text" id="author_namef" name="author_namef" placeholder="Author first name">
+    </div>
+    <div>
+        <label for="author_namel">Author Last Name:</label>
+        <input type="text" id="author_namel" name="author_namel" placeholder="Author last name">
     </div>
     <button type="submit">Add Book</button>
 </form>

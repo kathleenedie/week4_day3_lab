@@ -5,8 +5,12 @@
     <div>Publisher: {{ book.publisher}}</div>
     <div>Genre: {{ book.genre}}</div>
     <hr>
+    <form action="/books/{{ book.id }}/edit" method="post">
+        <input type="submit" value="Edit">
+    </form>
     <form action="/books/{{ book.id }}/delete" method="post">
         <input type="submit" value="Delete">
     </form>
+
 
 {% endblock %}
